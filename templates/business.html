@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Manufacturing KPI</title>
+
+<style>
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    background-color:#f4f6f8;
+}
+
+/* Header */
+
+header{
+    background-color:#2c3e50;
+    padding:25px;
+    text-align:center;
+    font-size:32px;
+    color:white;
+}
+
+/* Navigation */
+
+nav{
+    background-color:#34495e;
+    padding:10px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-right:20px;
+    font-size:18px;
+}
+
+nav a:hover{
+    color:#f1c40f;
+}
+
+/* Container */
+
+.container{
+    width:1000px;
+    margin:auto;
+    margin-top:40px;
+    display:flex;
+    gap:40px;
+}
+
+/* Calculator boxes */
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    width:50%;
+}
+
+/* Inputs */
+
+input{
+    width:100%;
+    padding:8px;
+    margin-top:5px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+
+/* Button */
+
+button{
+    background-color:#3498db;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+button:hover{
+    background-color:#2980b9;
+}
+
+/* Result */
+
+.result{
+    margin-top:15px;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+Business KPIs
+</header>
+
+<nav>
+<a href="/">Home</a>
+<a href="/productionquality">Manufacturing</a>
+<a href="/business">Business</a>
+</nav>
+
+<div class="container">
+
+<div class="card">
+
+<h3>Revenue growth</h3>
+<p>Profit ratio for time period.</p>
+
+<h4>Formula</h4>
+<p>Revenue Growth = (Current Revenue − Previous Revenue) / Previous Revenue</p>
+
+<form method="POST">
+
+<label>Current Revenue</label>
+<input type="number" name="current_rev" required>
+
+<label>Previous Revenue</label>
+<input type="number" name="previous_rev" required>
+
+<button type="submit" name="form_type" value="rg">Calculate</button>
+
+</form>
+
+{% if result2 is not none %}
+<div class="result">
+Revenue Growth = {{ result2 }}
+</div>
+{% endif %}
+
+</div>
+
+
+<div class="card">
+
+<h3>Return on Investment (ROI)</h3>
+<p>This measures ratio of net profit to money invested</p>
+
+<h4>Formula</h4>
+<p>ROI = Net Profit / Investment</p>
+
+<form method="POST">
+
+<label>Net Profit</label>
+<input type="number" step="any" name="net_profit" required>
+
+<label>Investment</label>
+<input type="number" step="any" name="investment" required>
+
+
+<button type="submit" name="form_type" value="roi">Calculate</button>
+
+</form>
+
+{% if result is not none %}
+<div class="result">
+ROI = {{ result }}
+</div>
+{% endif %}
+
+</div>
+
+</div>
+
+</body>
+</html>
